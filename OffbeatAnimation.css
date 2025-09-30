@@ -1,0 +1,197 @@
+.section2 { 
+  font-family: 'Inter', sans-serif; 
+  background-color: #111; 
+  color: #fff; 
+  overflow-x: hidden; 
+}
+
+/* Preloader */
+.ob-preloader { 
+  position: fixed; 
+  top: 0; 
+  left: 0; 
+  width: 100%; 
+  height: 100%; 
+  background-color: #111; 
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center; 
+  padding: 2.5rem; 
+  z-index: 1000; 
+}
+
+.ob-preloader-logo { 
+  font-family: 'Cormorant Garamond', serif; 
+  font-weight: 700; 
+  font-size: 2.5rem; 
+  letter-spacing: 0.1em; 
+  opacity: 0; 
+}
+
+.ob-preloader-counter { 
+  font-family: 'Inter', sans-serif; 
+  font-weight: 400; 
+  font-size: 1.5rem; 
+  opacity: 0; 
+}
+
+.ob-main-container { 
+  position: sticky; 
+  top: 0; 
+  width: 100vw; 
+  height: 100vh; 
+  overflow: hidden; 
+}
+
+.ob-slides-container { 
+  position: absolute; 
+  top: 0; 
+  left: 0; 
+  width: 100%; 
+  height: 100%; 
+  overflow: hidden; 
+}
+
+.ob-slide { 
+  position: absolute; 
+  top: 0; 
+  left: 0; 
+  width: 100%; 
+  height: 100%; 
+  background-size: cover; 
+  background-position: center center; 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  opacity: 0; 
+  visibility: hidden; 
+  transform: scale(1.05); 
+}
+
+/* Foreground content */
+.ob-foreground-content { 
+  position: absolute; 
+  top: 0; 
+  left: 0; 
+  width: 100%; 
+  height: 100%; 
+  display: flex; 
+  flex-direction: column; 
+  justify-content: space-between; 
+  padding: 2.5rem; 
+  mix-blend-mode: difference; 
+  pointer-events: none; 
+  z-index: 30; 
+}
+
+.ob-header { 
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center; 
+  width: 100%; 
+}
+
+.ob-logo { 
+  font-family: 'Cormorant Garamond', serif; 
+  font-weight: 700; 
+  font-size: 1.5rem; 
+  letter-spacing: 0.1em; 
+}
+
+.ob-nav a { 
+  margin-left: 2rem; 
+  font-size: 0.875rem; 
+  letter-spacing: 0.1em; 
+  text-transform: uppercase; 
+}
+
+.ob-marquee-container { 
+  height: 100%; 
+  overflow: hidden; 
+  position: absolute; 
+  top: 0; 
+  left: 50%; 
+  transform: translateX(-50%); 
+  pointer-events: none; 
+  display: flex; 
+  flex-direction: row; 
+  z-index: 20; 
+}
+
+.ob-marquee-text { 
+  display: flex; 
+  flex-direction: column; 
+  flex-shrink: 0; 
+  white-space: nowrap; 
+  font-family: 'Inter', sans-serif; 
+  text-transform: uppercase; 
+  font-size: 10rem; 
+  writing-mode: vertical-rl; 
+  letter-spacing: -0.05em; 
+}
+
+.ob-marquee-top { 
+  font-weight: 100 !important; 
+  opacity: 0.3; 
+  color: transparent; 
+  -webkit-text-stroke: 1px #fff; 
+  text-stroke: 1px #fff; 
+}
+
+.ob-marquee-bottom { 
+  font-weight: 700; 
+}
+
+/* PARALLAX helpers */
+.parallax { will-change: transform; }
+.ob-slide .parallax-layer { 
+  position: absolute; 
+  inset: 0; 
+  background-repeat: no-repeat; 
+  background-position: center; 
+  background-size: cover; 
+}
+
+/* Custom cursor */
+.cursor, .cursor-follower { 
+  position: fixed; 
+  top: 0; 
+  left: 0; 
+  width: 18px; 
+  height: 18px; 
+  border-radius: 50%; 
+  pointer-events: none; 
+  transform: translate(-50%, -50%); 
+  z-index: 9999; 
+  transition: transform 0.18s ease-out, width 0.18s ease-out, height 0.18s ease-out, background-color 0.18s; 
+  mix-blend-mode: difference; 
+}
+
+.cursor { background: rgba(255,255,255,0.95); }
+.cursor-follower { 
+  width: 42px; 
+  height: 42px; 
+  background: rgba(255,255,255,0.06); 
+  transition: transform 0.28s cubic-bezier(.2,.9,.2,1); 
+}
+
+.cursor.hidden, .cursor-follower.hidden { opacity: 0; }
+.cursor.hover, .cursor-follower.hover { transform: translate(-50%, -50%) scale(1.6); }
+.is-locked { transform: translate(-50%, -50%) scale(0.9); }
+
+/* Responsive */
+@media (max-width: 768px) {
+  .ob-preloader { padding: 1.5rem; }
+  .ob-preloader-logo { font-size: 1.5rem; }
+  .ob-preloader-counter { font-size: 1rem; }
+  .ob-foreground-content { padding: 1.5rem; }
+  .ob-logo { font-size: 1.25rem; }
+  .ob-nav a { margin-left: 1rem; font-size: 0.75rem; }
+  .ob-marquee-text { font-size: 4rem; }
+  .ob-main-container { width: 100vw; height: 60vh; }
+  .cursor, .cursor-follower { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cursor, .cursor-follower { transition: none; }
+}
